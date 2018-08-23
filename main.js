@@ -1,5 +1,6 @@
-(function() {
-document.querySelector("body").innerHTML;
-console.log("Hi!");
-console.log("This is a change to be commited")
+(function () {
+    let body = document.querySelector("body");
+    console.log("Hi!");
+    
+    body.innerHTML = `<h1>This is awesome</h1>`;
 })();
