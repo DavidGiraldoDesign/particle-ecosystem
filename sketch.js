@@ -2,19 +2,19 @@ let canvas;
 let particles = [];
 
 function setup() {
-
+    frameRate(60);
     canvas = createCanvas(windowWidth, windowHeight);
     canvas.style('z-index', '-1');
     canvas.style('position', 'fixed');
     canvas.style('top', '0');
 
-    for (let i = 0; i < 500; i++) {
-        particles[i] = new Particle(random(0, windowWidth), random(0, windowHeight), 5, 255, 0, 0);
+    for (let i = 0; i < 1000; i++) {
+        particles[i] = new Particle(random(0, windowWidth), random(0, windowHeight), 5, 255, 255, 255);
     }
 }
 
 function draw() {
-    background(0);
+    background(0,50);
     newCursor();
     particles.forEach(p => {
         displayParicles(p.getX(), p.getY(), p.getSize(), p.getColor(), false, true);
