@@ -16,6 +16,7 @@ class Particle {
         this.targetY = random(0, windowHeight);
         this.changeTime = random(0, 60);
         this.detectedTouch = false;
+        this.changeRate = Math.floor(Math.random() * Math.floor(20));
     }
 
     move() {
@@ -24,9 +25,7 @@ class Particle {
         this.acceleration = p5.Vector.sub(this.target, this.location);
         this.acceleration.setMag(0.1);
         this.velocity.add(this.acceleration);
-        // Limit the velocity by topspeed
         this.velocity.limit(2);
-        // Location changes by velocity
         this.location.add(this.velocity);
         this.x = this.location.x;
         this.y = this.location.y;
@@ -38,7 +37,10 @@ class Particle {
             this.targetX = mx;
             this.targetY = my;
         } else {
-            if (new Date().getSeconds() % 10 === 0) {
+            if (new Date().getSeconds() % this.changeRate === 0) {
+                this.targetX = random(0, windowWidth);
+                this.targetY = random(0, windowHeight);
+            }else{
                 this.targetX = random(0, windowWidth);
                 this.targetY = random(0, windowHeight);
             }
