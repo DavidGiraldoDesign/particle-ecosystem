@@ -14,7 +14,7 @@ function setup() {
 }
 
 function draw() {
-    background(0,50);
+    background(0,60);
     newCursor();
     //console.log(int(dist(mouseX, mouseY, 0, 0)));
     particles.forEach(p => {

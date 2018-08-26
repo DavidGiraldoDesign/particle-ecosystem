@@ -22,6 +22,7 @@ class Particle {
     change(mx, my) {
         if (this.detectedTouch === true && dist(mouseX, mouseY, this.getX(), this.getY()) < 200) {
             this.mouseIsNear = true;
+            this.mapMouseDistToColor();
             this.targetX = mx;
             this.targetY = my;
 
@@ -54,7 +55,11 @@ class Particle {
 
     }
 
-
+    mapMouseDistToColor(){
+        let mouseDist = dist(mouseX,mouseY,this.x,this.y);
+        this.r = map(mouseDist,0,200,0,255);
+        this.g = map(mouseDist,0,200,255,0);
+    }
 
     setDetectedTouch(isTouch) {
         this.detectedTouch = isTouch;
