@@ -16,10 +16,16 @@ function setup() {
 function draw() {
     background(0,50);
     newCursor();
+    //console.log(int(dist(mouseX, mouseY, 0, 0)));
     particles.forEach(p => {
         displayParicles(p.getX(), p.getY(), p.getSize(), p.getColor(), false, true);
-        p.move();
         p.change(mouseX,mouseY);
+        p.move();
+        //if(dist(mouseX,p.getX())<20 
+        //&& dist(mouseY,p.getY())){
+        
+        //}
+        
 
     });
 }

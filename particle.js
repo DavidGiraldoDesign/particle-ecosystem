@@ -16,13 +16,35 @@ class Particle {
         this.targetY = random(0, windowHeight);
         this.changeTime = random(0, 60);
         this.detectedTouch = false;
+        this.mouseIsNear = false;
         this.changeRate = Math.floor(Math.random() * Math.floor(20));
+    }
+    change(mx, my) {
+        if (this.detectedTouch === true && dist(mouseX, mouseY, this.getX(), this.getY()) < 200) {
+            this.mouseIsNear = true;
+            this.targetX = mx;
+            this.targetY = my;
+
+        } else {
+            this.mouseIsNear = false;
+            if (new Date().getSeconds() % this.changeRate === 0) {
+                this.targetX = random(0, windowWidth);
+                this.targetY = random(0, windowHeight);
+            } else {
+                this.targetX = random(0, windowWidth);
+                this.targetY = random(0, windowHeight);
+            }
+        }
     }
 
     move() {
-        this.x++;
         this.target = createVector(this.targetX, this.targetY);
-        this.acceleration = p5.Vector.sub(this.target, this.location);
+        if (this.mouseIsNear === true) {
+            this.acceleration = p5.Vector.sub(this.location, this.target);
+
+        } else {
+            this.acceleration = p5.Vector.sub(this.target, this.location);
+        }
         this.acceleration.setMag(0.1);
         this.velocity.add(this.acceleration);
         this.velocity.limit(2);
@@ -32,20 +54,7 @@ class Particle {
 
     }
 
-    change(mx, my) {
-        if (this.detectedTouch === true) {
-            this.targetX = mx;
-            this.targetY = my;
-        } else {
-            if (new Date().getSeconds() % this.changeRate === 0) {
-                this.targetX = random(0, windowWidth);
-                this.targetY = random(0, windowHeight);
-            }else{
-                this.targetX = random(0, windowWidth);
-                this.targetY = random(0, windowHeight);
-            }
-        }
-    }
+
 
     setDetectedTouch(isTouch) {
         this.detectedTouch = isTouch;
