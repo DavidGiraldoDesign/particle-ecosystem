@@ -28,6 +28,7 @@ class Particle {
 
         } else {
             this.mouseIsNear = false;
+            this.turnToWhite();
             if (new Date().getSeconds() % this.changeRate === 0) {
                 this.targetX = random(0, windowWidth);
                 this.targetY = random(0, windowHeight);
@@ -55,10 +56,25 @@ class Particle {
 
     }
 
-    mapMouseDistToColor(){
-        let mouseDist = dist(mouseX,mouseY,this.x,this.y);
-        this.r = map(mouseDist,0,200,0,255);
-        this.g = map(mouseDist,0,200,255,0);
+    mapMouseDistToColor() {
+        let mouseDist = dist(mouseX, mouseY, this.x, this.y);
+        // this.r = map(mouseDist,0,200,255,0);
+        this.g = map(mouseDist, 0, 200, 10, 255);
+        this.b = map(mouseDist, 0, 200, 80, 255);
+    }
+
+    turnToWhite() {
+        if (this.r < 255) {
+            this.r += 5;
+        }
+
+        if (this.g < 255) {
+            this.g += 5;
+        }
+
+        if (this.b < 255) {
+            this.b += 5;
+        }
     }
 
     setDetectedTouch(isTouch) {
