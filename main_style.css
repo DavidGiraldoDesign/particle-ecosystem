@@ -22,13 +22,35 @@ h2 {
     text-align: center;
 }
 
-p {
+#title {
     font-family: 'Roboto Mono', monospace;
-    top: 10px;
-    left: 10px;
-    font-size: 10pt;
-    color: rgb(255, 255, 255);
-    text-align: center;
+    font-weight: lighter;
+    top: 30px;
+    left: 30px;
+    font-size: 8pt;
+    color: rgb(179, 179, 179);
+    text-align: left;
+    position: fixed;
+}
+
+a:link, a:visited { 
+    color: rgb(0, 26, 255);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:link:active, a:visited:active { 
+    color: (internal value);
+}
+
+#info {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: lighter;
+    bottom: 30px;
+    right: 30px;
+    font-size: 8pt;
+    color: rgb(146, 146, 146);
+    text-align: right;
     position: fixed;
 }
 
