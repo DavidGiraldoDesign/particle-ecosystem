@@ -8,8 +8,8 @@ function setup() {
     canvas.style('position', 'fixed');
     canvas.style('top', '0');
 
-    for (let i = 0; i < 1000; i++) {
-        particles[i] = new Particle(random(0, windowWidth), random(0, windowHeight), 5, 255, 255, 255);
+    for (let i = 0; i < 1500; i++) {
+        particles[i] = new Particle(random(0, windowWidth), random(0, windowHeight), 3, 255, 255, 255);
     }
 }
 
@@ -17,14 +17,17 @@ function draw() {
     background(0,60);
     newCursor();
     //console.log(int(dist(mouseX, mouseY, 0, 0)));
-    particles.forEach(p => {
+    particles.forEach((p,i) => {
         displayParicles(p.getX(), p.getY(), p.getSize(), p.getColor(), false, true);
         p.change(mouseX,mouseY);
         p.move();
-        //if(dist(mouseX,p.getX())<20 
-        //&& dist(mouseY,p.getY())){
         
-        //}
+        // particles.forEach((o,j)=>{
+        //     if(i!=j){
+        //         p.avoidOther(o.getX(),o.getY());
+        //     }
+            
+        // });
         
 
     });
@@ -52,7 +55,7 @@ function displayParicles(x, y, s, rgb, hasStroke, hasFill) {
     } else {
         noStroke();
     }
-    ellipse(x, y, s, s);
+    rect(x, y, s, s);
 }
 
 function mousePressed() {

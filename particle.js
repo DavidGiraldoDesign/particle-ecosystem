@@ -11,6 +11,9 @@ class Particle {
         this.location = createVector(this.x, this.y);
         this.velocity = createVector(this.x, this.y);
         this.acceleration = 0;
+        this.avoidTarget = 0;
+        this.avoidAcceleration = 0;
+        this.speed = 2
         this.target = 0;
         this.targetX = random(0, windowWidth);
         this.targetY = random(0, windowHeight);
@@ -22,12 +25,14 @@ class Particle {
     change(mx, my) {
         if (this.detectedTouch === true && dist(mouseX, mouseY, this.getX(), this.getY()) < 200) {
             this.mouseIsNear = true;
+            this.speed = 4;
             this.mapMouseDistToColor();
             this.targetX = mx;
             this.targetY = my;
 
         } else {
             this.mouseIsNear = false;
+            this.speed = 2;
             this.turnToWhite();
             if (new Date().getSeconds() % this.changeRate === 0) {
                 this.targetX = random(0, windowWidth);
@@ -49,16 +54,28 @@ class Particle {
         }
         this.acceleration.setMag(0.1);
         this.velocity.add(this.acceleration);
-        this.velocity.limit(2);
+        this.velocity.limit(this.speed);
         this.location.add(this.velocity);
         this.x = this.location.x;
         this.y = this.location.y;
+    }
 
+    avoidOther(xOther, yOther) {
+        if (dist(this.x, this.y, xOther, yOther) < this.s) {
+            this.avoidTarget = createVector(xOther, yOther);
+            this.avoidAcceleration = p5.Vector.sub(this.location, this.avoidTarget);
+            this.avoidAcceleration.setMag(5);
+            this.velocity.add(this.avoidAcceleration);
+            this.velocity.limit(10);
+            this.location.add(this.velocity);
+            this.x = this.location.x;
+            this.y= this.location.y;
+        }
     }
 
     mapMouseDistToColor() {
         let mouseDist = dist(mouseX, mouseY, this.x, this.y);
-        // this.r = map(mouseDist,0,200,255,0);
+         this.r = map(mouseDist,0,200,255,0);
         this.g = map(mouseDist, 0, 200, 10, 255);
         this.b = map(mouseDist, 0, 200, 80, 255);
     }
