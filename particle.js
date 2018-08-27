@@ -23,10 +23,10 @@ class Particle {
         this.changeRate = Math.floor(Math.random() * Math.floor(20));
     }
     change(mx, my) {
-        if (this.detectedTouch === true && dist(mouseX, mouseY, this.getX(), this.getY()) < 200) {
+        if (this.detectedTouch === true && dist(mx, my, this.getX(), this.getY()) < 200) {
             this.mouseIsNear = true;
             this.speed = 4;
-            this.mapMouseDistToColor();
+            //this.mapMouseDistToColor();
             this.targetX = mx;
             this.targetY = my;
 
@@ -64,9 +64,9 @@ class Particle {
         if (dist(this.x, this.y, xOther, yOther) < this.s) {
             this.avoidTarget = createVector(xOther, yOther);
             this.avoidAcceleration = p5.Vector.sub(this.location, this.avoidTarget);
-            this.avoidAcceleration.setMag(5);
+            this.avoidAcceleration.setMag(1);
             this.velocity.add(this.avoidAcceleration);
-            this.velocity.limit(10);
+            this.velocity.limit(5);
             this.location.add(this.velocity);
             this.x = this.location.x;
             this.y= this.location.y;

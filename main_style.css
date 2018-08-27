@@ -2,7 +2,8 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    cursor: none;
+    background: none;
+    /*cursor: none;*/
 }
 
 h1 {
@@ -33,13 +34,15 @@ h2 {
     position: fixed;
 }
 
-a:link, a:visited { 
+a:link,
+a:visited {
     color: rgb(0, 26, 255);
     text-decoration: none;
     cursor: pointer;
 }
 
-a:link:active, a:visited:active { 
+a:link:active,
+a:visited:active {
     color: (internal value);
 }
 
@@ -55,12 +58,34 @@ a:link:active, a:visited:active {
 }
 
 .container {
+    
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.e {
+   /* background-image: url('https://instagram.fclo1-1.fna.fbcdn.net/vp/c993e515f43505b1b1a6e89cca383ed7/5BFE028E/t51.2885-15/e35/22352532_142189573062985_510759147222859776_n.jpg');*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+ 
+    position: fixed;
+    width: 50px;
+    height: 50px;
+   /* background: rgb(26, 77, 247);*/
+    border-radius: 100px;
+    transition: width 0.5s, height 0.5s ;
+    -webkit-transition: width 0.5s, height 0.5s ; /* ease-in-out Safari 3.1 to 6.0 */
+}
+.e:hover{
+    z-index: 1;
+    width: 200px;
+    height:200px;
 }
 
 .disable-select {
