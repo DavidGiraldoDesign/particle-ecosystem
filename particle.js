@@ -48,6 +48,7 @@ class Particle {
         this.target = createVector(this.targetX, this.targetY);
         if (this.mouseIsNear === true) {
             this.acceleration = p5.Vector.sub(this.location, this.target);
+           // this.acceleration = p5.Vector.sub(this.target,this.location);
 
         } else {
             this.acceleration = p5.Vector.sub(this.target, this.location);

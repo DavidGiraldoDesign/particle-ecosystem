@@ -3,8 +3,17 @@
     padding: 0;
     margin: 0;
     cursor: none;
+  /*  background: url("http://api.thumbr.it/whitenoise-361x370.png?background=101010ff&noise=171717&density=90&opacity=40") fixed center;
+*/
 }
+body{
+    background: url("http://api.thumbr.it/whitenoise-361x370.png?background=101010ff&noise=171717&density=90&opacity=40") fixed center;
 
+}
+.container{
+    z-index: 2;
+    
+}
 h1 {
     font-family: 'Monoton', cursive;
     font-weight: lighter;

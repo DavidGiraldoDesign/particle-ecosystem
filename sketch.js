@@ -4,7 +4,7 @@ let particles = [];
 function setup() {
     frameRate(60);
     canvas = createCanvas(windowWidth, windowHeight);
-    canvas.style('z-index', '-1');
+   canvas.style('z-index', '0');
     canvas.style('position', 'fixed');
     canvas.style('top', '0');
 
@@ -14,7 +14,9 @@ function setup() {
 }
 
 function draw() {
-    background(0,60);
+    
+    clear();
+    //background(0,60);
     newCursor();
     //console.log(int(dist(mouseX, mouseY, 0, 0)));
     particles.forEach((p,i) => {
@@ -23,9 +25,9 @@ function draw() {
         p.move();
         
         // particles.forEach((o,j)=>{
-        //     if(i!=j){
-        //         p.avoidOther(o.getX(),o.getY());
-        //     }
+        //      if(i!=j){
+        //          p.avoidOther(o.getX(),o.getY());
+        //      }
             
         // });
         
@@ -59,6 +61,7 @@ function displayParicles(x, y, s, rgb, hasStroke, hasFill) {
 }
 
 function mousePressed() {
+    
     particles.forEach(p => {
         p.setDetectedTouch(true);
     });
