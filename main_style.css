@@ -7,8 +7,8 @@
 */
 }
 body{
-    background: url("http://api.thumbr.it/whitenoise-361x370.png?background=101010ff&noise=171717&density=90&opacity=40") fixed center;
-
+    /*background: url("http://api.thumbr.it/whitenoise-361x370.png?background=101010ff&noise=171717&density=90&opacity=40") fixed center;
+*/
 }
 .container{
     z-index: 2;
