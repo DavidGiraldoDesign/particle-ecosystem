@@ -4,7 +4,7 @@ let particles = [];
 function setup() {
     frameRate(60);
     canvas = createCanvas(windowWidth, windowHeight);
-   canvas.style('z-index', '0');
+   canvas.style('z-index', '-1');
     canvas.style('position', 'fixed');
     canvas.style('top', '0');
 
