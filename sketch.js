@@ -8,21 +8,22 @@ function setup() {
     canvas.style('position', 'fixed');
     canvas.style('top', '0');
 
-    for (let i = 0; i < 1500; i++) {
-        particles[i] = new Particle(random(0, windowWidth), random(0, windowHeight), 3, 255, 255, 255);
+    for (let i = 0; i < 800; i++) {
+        particles[i] = new Particle(random(0, windowWidth), random(0, windowHeight), 4, 255, 255, 255);
     }
 }
 
 function draw() {
     
     //clear();
-    background(0,60);
+    background(0,50);
     newCursor();
     //console.log(int(dist(mouseX, mouseY, 0, 0)));
     particles.forEach((p,i) => {
         displayParicles(p.getX(), p.getY(), p.getSize(), p.getColor(), false, true);
         p.change(mouseX,mouseY);
         p.move();
+        p.setGrey();
         
         // particles.forEach((o,j)=>{
         //      if(i!=j){

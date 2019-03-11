@@ -20,6 +20,7 @@ class Particle {
         this.changeTime = random(0, 60);
         this.detectedTouch = false;
         this.mouseIsNear = false;
+        this.follow = false;
         this.changeRate = Math.floor(Math.random() * Math.floor(20));
     }
     change(mx, my) {
@@ -47,8 +48,13 @@ class Particle {
     move() {
         this.target = createVector(this.targetX, this.targetY);
         if (this.mouseIsNear === true) {
+           // this.acceleration = p5.Vector.sub(this.location, this.target);
+           if(this.follow === true){
+            this.acceleration = p5.Vector.sub(this.target,this.location);
+           }else{
             this.acceleration = p5.Vector.sub(this.location, this.target);
-           // this.acceleration = p5.Vector.sub(this.target,this.location);
+           }
+           
 
         } else {
             this.acceleration = p5.Vector.sub(this.target, this.location);
@@ -76,9 +82,24 @@ class Particle {
 
     mapMouseDistToColor() {
         let mouseDist = dist(mouseX, mouseY, this.x, this.y);
-         this.r = map(mouseDist,0,200,255,0);
+        this.r = map(mouseDist,0,200,255,0);
         this.g = map(mouseDist, 0, 200, 10, 255);
         this.b = map(mouseDist, 0, 200, 80, 255);
+    }
+
+    setGrey(){
+        let centerX = windowWidth/2;
+        let centerY = windowHeight/2;
+        let range = 250;
+
+        if(this.x > centerX-range && this.x < centerX+range && this.y > centerY-range && this.y <centerY+range){
+
+        }else{
+            this.r=80;
+            this.g=80;
+            this.b=80;
+        }
+
     }
 
     turnToWhite() {
